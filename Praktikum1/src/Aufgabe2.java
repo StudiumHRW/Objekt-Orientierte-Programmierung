@@ -13,7 +13,7 @@ public class Aufgabe2 {
         if (unteregrenze > oberegrenze) {
             System.err.println("Die untere Grenze darf nicht größer als die Obere sein");
             System.err.println("Falsche eingabe!");
-            System.exit(1);
+            return;
         }
         int ergebnis = 0;
         int i = 0;
