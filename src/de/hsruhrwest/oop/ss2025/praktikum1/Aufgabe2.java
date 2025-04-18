@@ -1,3 +1,5 @@
+package de.hsruhrwest.oop.ss2025.praktikum1;
+
 import java.util.Scanner;
 
 // ich liebe makatussin 👅👅👅👅
