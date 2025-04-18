@@ -1,3 +1,5 @@
+package de.hsruhrwest.oop.ss2025.praktikum0;
+
 public class OneOhOne {
 	/**
 	 * Computes and outputs the product of two integer numbers.
