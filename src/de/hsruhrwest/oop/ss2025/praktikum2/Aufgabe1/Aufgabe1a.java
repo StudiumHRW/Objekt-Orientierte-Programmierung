@@ -1,4 +1,4 @@
-package de.hsruhrwest.oop.ss2025.praktikum2;
+package de.hsruhrwest.oop.ss2025.praktikum2.Aufgabe1;
 
 import java.util.Scanner;
 
