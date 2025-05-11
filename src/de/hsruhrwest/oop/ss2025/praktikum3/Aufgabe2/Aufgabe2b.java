@@ -12,7 +12,7 @@ public class Aufgabe2b {
         return positiveNumbers;
     }
 
-
+//hallo
     public static void main(String[] args) {
 
         ArrayList <Integer> positiveNumbers = extractPositiveNumbers(args);
