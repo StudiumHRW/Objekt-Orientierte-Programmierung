@@ -5,28 +5,25 @@ public class Aufgabe2e {
         String[] words = sentence.split(" ");
         System.out.println("Alle Worte:");
         for (String word : words) {
-            boolean number = false;
-            try {
-                Double.parseDouble(word);
-                number = true;
-            } catch (NullPointerException | NumberFormatException ignored) {
-            }
-            if (!number) {
+            if (!isValidNumber(word)) {
                 System.out.println("    " + word);
             }
         }
         System.out.println("Alle Zahlen:");
         for (String word : words) {
-            boolean number = false;
-            try {
-                Double.parseDouble(word);
-                number = true;
-            } catch (NullPointerException | NumberFormatException ignored) {
-            }
-            if (number) {
+            if (isValidNumber(word)) {
                 System.out.println("    " + word);
             }
         }
+    }
+
+    private static boolean isValidNumber(String s) {
+        try {
+            Double.parseDouble(s);
+            return true;
+        } catch (NullPointerException | NumberFormatException ignored) {
+        }
+        return false;
     }
 
     public static String inputSentence() {
