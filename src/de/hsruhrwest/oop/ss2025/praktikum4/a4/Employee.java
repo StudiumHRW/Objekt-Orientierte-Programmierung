@@ -15,7 +15,6 @@ public class Employee {
     }
 
     public long getId() {
-        Employee steve = new Employee("Steve", LocalDate.of(1970, 1, 1));
         return id;
     }
 
