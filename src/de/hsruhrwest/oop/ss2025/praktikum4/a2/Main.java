@@ -1,6 +1,6 @@
 package de.hsruhrwest.oop.ss2025.praktikum4.a2;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         Zylinder zylinder1 = new Zylinder(10, 10,"Hurensohn");
         System.out.println("Volumen des Zylinders: " + zylinder1.volume());
