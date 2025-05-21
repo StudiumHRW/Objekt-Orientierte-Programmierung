@@ -14,10 +14,10 @@ public class Kugel {
     }
 
     public double surfaceArea() {
-        return 4 * Math.PI * (radius * radius);
+        return 4 * Math.PI * (this.radius * this.radius);
     }
 
     public double volume() {
-        return (4.0/3.0) * Math.PI * (radius * radius * radius);
+        return (4.0/3.0) * Math.PI * (this.radius * this.radius * this.radius);
     }
 }

@@ -18,4 +18,4 @@
 - Funktionsweise des Geräts (Features)
 - Anzahl verfügbarer Geräte
 - Benötigtes Material (z. B. Benzin)
-- Voraussetzungen für Ausleihe (z. B. Führerschein)
+- Voraussetzungen für Ausleihe (z. B. Führerschein, Alter)
