@@ -1,14 +1,14 @@
 package de.hsruhrwest.oop.ss2025.praktikum4.a3;
 
-public class ShoppingCardItem2 {
+public class ShoppingCartItem {
     private final String name;
-    private final double totalPrice;
+    private final double price;
     private final int amount;
 
 
-    public ShoppingCardItem2(String name, double price, int amount) {
+    public ShoppingCartItem(String name, double price, int amount) {
         this.name = name;
-        this.totalPrice = price;
+        this.price = price;
         this.amount = amount;
     }
 
@@ -16,12 +16,12 @@ public class ShoppingCardItem2 {
         return name;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public double getPrice() {
+        return price;
     }
 
-    public double getPrice() {
-        return totalPrice / amount;
+    public double getTotalPrice() {
+        return price * amount;
     }
 
     public int getAmount() {
