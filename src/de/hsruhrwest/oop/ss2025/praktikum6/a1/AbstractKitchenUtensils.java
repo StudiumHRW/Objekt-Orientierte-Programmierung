@@ -1,4 +1,4 @@
-package de.hsruhrwest.oop.ss2025.praktikum6;
+package de.hsruhrwest.oop.ss2025.praktikum6.a1;
 
 public abstract class AbstractKitchenUtensils {
     private String kitchenUtensilsName;
