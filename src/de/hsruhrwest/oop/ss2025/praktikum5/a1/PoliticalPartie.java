@@ -9,6 +9,14 @@ public class PoliticalPartie {
     private final int yearFounded;
     private String[] leaders;
 
+    public PoliticalPartie(String[] members, String name, String[] mainGoals, int yearFounded, String[] leaders) {
+        this.members = members;
+        this.name = name;
+        this.mainGoals = mainGoals;
+        this.yearFounded = yearFounded;
+        this.leaders = leaders;
+    }
+
     public String[] getMembers() {
         return members;
     }
@@ -54,17 +62,5 @@ public class PoliticalPartie {
                 ", yearFounded=" + yearFounded +
                 ", leaders=" + Arrays.toString(leaders) +
                 '}';
-    }
-
-    public PoliticalPartie(int yearFounded) {
-        this.yearFounded = yearFounded;
-    }
-
-    public PoliticalPartie(String[] members, String name, String[] mainGoals, int yearFounded, String[] leaders) {
-        this.members = members;
-        this.name = name;
-        this.mainGoals = mainGoals;
-        this.yearFounded = yearFounded;
-        this.leaders = leaders;
     }
 }

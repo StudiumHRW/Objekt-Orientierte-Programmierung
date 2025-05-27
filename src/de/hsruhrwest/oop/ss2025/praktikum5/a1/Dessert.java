@@ -5,6 +5,15 @@ public class Dessert {
     private final double price;
     private final int amount;
     private final String flavor;
+    private final String color;
+
+    public Dessert(String name, double price, int amount, String flavor, String color) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.flavor = flavor;
+        this.color = color;
+    }
 
     public String getName() {
         return name;
@@ -24,16 +33,6 @@ public class Dessert {
 
     public String getColor() {
         return color;
-    }
-
-    private final String color;
-
-    public Dessert(String name, double price, int amount, String flavor, String color) {
-        this.name = name;
-        this.price = price;
-        this.amount = amount;
-        this.flavor = flavor;
-        this.color = color;
     }
 
     @Override

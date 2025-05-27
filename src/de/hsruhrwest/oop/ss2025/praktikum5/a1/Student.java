@@ -9,9 +9,12 @@ public class Student {
     private final String[] courses;
     private final String gender;
 
-    @Override
-    public String toString() {
-        return "Student{" + "name='" + name + '\'' + ", age=" + age + ", major='" + major + '\'' + ", courses=" + Arrays.toString(courses) + ", gender='" + gender + '\'' + '}';
+    public Student(String name, int age, String major, String[] courses, String gender) {
+        this.name = name;
+        this.age = age;
+        this.major = major;
+        this.courses = courses;
+        this.gender = gender;
     }
 
     public String getName() {
@@ -34,11 +37,8 @@ public class Student {
         return gender;
     }
 
-    public Student(String name, int age, String major, String[] courses, String gender) {
-        this.name = name;
-        this.age = age;
-        this.major = major;
-        this.courses = courses;
-        this.gender = gender;
+    @Override
+    public String toString() {
+        return "Student{" + "name='" + name + '\'' + ", age=" + age + ", major='" + major + '\'' + ", courses=" + Arrays.toString(courses) + ", gender='" + gender + '\'' + '}';
     }
 }
