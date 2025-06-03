@@ -1,6 +1,6 @@
 package de.hsruhrwest.oop.ss2025.praktikum6.a1;
 
-public class Handy extends AbstractKitchenUtensils implements BatteriebetriebeneGeräte.BatterypoweredDevice {
+public class Handy extends AbstractKitchenUtensils implements BatterypoweredDevice {
     private String color;
 
     public Handy(String kitchenUtensilsName, String color) {

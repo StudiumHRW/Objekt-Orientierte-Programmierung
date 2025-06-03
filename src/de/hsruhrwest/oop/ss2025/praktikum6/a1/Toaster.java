@@ -1,6 +1,6 @@
 package de.hsruhrwest.oop.ss2025.praktikum6.a1;
 
-public class Toaster extends AbstractKitchenUtensils implements ElektronischeGeräte.electricalDevice {
+public class Toaster extends AbstractKitchenUtensils implements ElectricalDevice {
     private double energyConsumption;
 
     public Toaster(String kitchenUtensilsName, String material) {

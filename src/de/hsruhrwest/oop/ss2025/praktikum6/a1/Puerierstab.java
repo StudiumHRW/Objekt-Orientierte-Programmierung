@@ -1,6 +1,6 @@
 package de.hsruhrwest.oop.ss2025.praktikum6.a1;
 
-public class Puerierstab extends AbstractKitchenUtensils implements ElektronischeGeräte.electricalDevice, GefährlicheGeräte.dangerousItem {
+public class Puerierstab extends AbstractKitchenUtensils implements ElectricalDevice, DangerousDevice {
     private double maxPower;
 
     public Puerierstab(String kitchenUtensilsName, double maxPower) {
