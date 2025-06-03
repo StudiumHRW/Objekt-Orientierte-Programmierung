@@ -18,7 +18,7 @@ public class Node<T, N extends Number> {
     }
 
     public void print() {
-        int sum = 0;
+        double sum = 0;
         int counter = 0;
         Node<T, N> current = this;
         while (current != null) {
