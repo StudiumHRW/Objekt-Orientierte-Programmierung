@@ -34,15 +34,7 @@ public class Statistik<T> {
     }
 
     public static <T> Statistik<T> getArrayStatistic(T[] array) {
-        int[] counter = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
-            counter[i] = 0;
-            for (T t : array) {
-                if (array[i].equals(t)) {
-                    counter[i]++;
-                }
-            }
-        }
+        int[] counter = countElements(array);
         int maxIndex = 0;
         int minIndex = 0;
         for (int i = 0; i < counter.length; i++) {
@@ -54,5 +46,23 @@ public class Statistik<T> {
             }
         }
         return new Statistik<>(array[maxIndex], array[minIndex]);
+    }
+
+    private static <T> int[] countElements(T[] array) {
+        int[] counter = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            counter[i] = countElement(array[i], array);
+        }
+        return counter;
+    }
+
+    private static <T> int countElement(T currentElement, T[] array) {
+        int counter = 0;
+        for (T t : array) {
+            if (currentElement.equals(t)) {
+                counter++;
+            }
+        }
+        return counter;
     }
 }
