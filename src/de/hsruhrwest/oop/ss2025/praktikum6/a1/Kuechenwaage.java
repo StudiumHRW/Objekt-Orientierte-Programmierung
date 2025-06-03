@@ -1,6 +1,6 @@
 package de.hsruhrwest.oop.ss2025.praktikum6.a1;
 
-public class Kuechenwaage extends AbstractKitchenUtensils implements BatterypoweredDevice {
+public class Kuechenwaage extends AbstractKitchenUtensils implements BatterypoweredDevice, ElectricalDevice {
     private double maxWeight;
 
     public Kuechenwaage(String kitchenUtensilsName, double maxWeight) {
@@ -18,5 +18,10 @@ public class Kuechenwaage extends AbstractKitchenUtensils implements Batterypowe
 
     public void setMaxWeight(double maxWeight) {
         this.maxWeight = maxWeight;
+    }
+
+    @Override
+    public double getEnergyConsumption() {
+        return 0;
     }
 }
