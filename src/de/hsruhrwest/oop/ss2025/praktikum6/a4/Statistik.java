@@ -45,18 +45,14 @@ public class Statistik<T> {
         }
         int maxIndex = 0;
         int minIndex = 0;
-        T maxElement = null;
-        T minElement = null;
         for (int i = 0; i < counter.length; i++) {
             if (counter[i] > counter[maxIndex]) {
                 maxIndex = i;
-                maxElement = array[maxIndex];
             }
             if (counter[i] < counter[minIndex]) {
                 minIndex = i;
-                minElement = array[minIndex];
             }
         }
-        return new Statistik<>(maxElement, minElement);
+        return new Statistik<>(array[maxIndex], array[minIndex]);
     }
 }

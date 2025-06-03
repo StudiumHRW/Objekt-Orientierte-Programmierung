@@ -12,7 +12,9 @@ public class Node<T, N extends Number> {
     }
 
     public Node(T content, N amount) {
-        this(content, amount, null);
+        this.content = content;
+        this.amount = amount;
+        this.parent = null;
     }
 
     public void print() {
