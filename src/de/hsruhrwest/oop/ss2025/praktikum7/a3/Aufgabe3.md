@@ -1,0 +1,1 @@
+Ein Set darf keine Duplikate enthalten. In dieser Implementation ist der HashCode der beiden "Person" Objekte aber unterschied. In der Standard Objekt Implementation wird der Hash Code durch die Objekt Referenz definiert. Dies könnte durch eine Implementation der hashCode funktion in Person gelöst werden, die den HashCode aus Basis von "name" berechnet
