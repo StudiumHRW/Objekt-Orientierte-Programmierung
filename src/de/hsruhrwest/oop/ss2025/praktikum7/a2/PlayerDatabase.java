@@ -1,23 +1,20 @@
 package de.hsruhrwest.oop.ss2025.praktikum7.a2;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class PlayerDatabase {
-    private final ArrayList<Player> players;
+    private final List<Player> players;
 
-    public PlayerDatabase(ArrayList<Player> players) {
-        this.players = players;
+    public PlayerDatabase(List<Player> players) {
+        this.players = new ArrayList<>(players);
     }
 
     public void add(Player player) {
         players.add(player);
     }
 
-    public ArrayList<Player> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 
