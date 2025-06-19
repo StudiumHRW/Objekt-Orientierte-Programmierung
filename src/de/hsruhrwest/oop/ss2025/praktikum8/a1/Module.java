@@ -6,7 +6,7 @@ package de.hsruhrwest.oop.ss2025.praktikum8.a1;
 public enum Module {
     OOP(0, "Objekt Orientierte Programmierung"),
     HMAT(1, "Höhere Mathematik"),
-    ENGLISH(2, "English"),
+    ENGLISH(2, "Englisch"),
     DATABASES(3, "Datenbanken"),
     DIGITAL_SYSTEMS(4, "Digitale Systeme");
 

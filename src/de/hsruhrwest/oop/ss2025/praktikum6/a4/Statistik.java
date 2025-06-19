@@ -1,5 +1,7 @@
 package de.hsruhrwest.oop.ss2025.praktikum6.a4;
 
+import java.util.Scanner;
+
 public class Statistik<T> {
     private T mostCommonElement;
     private T leastCommonElement;
@@ -46,6 +48,7 @@ public class Statistik<T> {
             }
         }
         return new Statistik<>(array[maxIndex], array[minIndex]);
+
     }
 
     private static <T> int[] countElements(T[] array) {

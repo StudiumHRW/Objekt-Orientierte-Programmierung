@@ -1,6 +1,6 @@
 package de.hsruhrwest.oop.ss2025.praktikum6.a1;
 
-public class Handy extends AbstractKitchenUtensils implements BatterypoweredDevice, ElectricalDevice {
+public class Handy extends AbstractKitchenUtensils implements BatterypoweredDevice {
     private String color;
 
     public Handy(String kitchenUtensilsName, String color) {
@@ -19,10 +19,5 @@ public class Handy extends AbstractKitchenUtensils implements BatterypoweredDevi
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    @Override
-    public double getEnergyConsumption() {
-        return 3;
     }
 }

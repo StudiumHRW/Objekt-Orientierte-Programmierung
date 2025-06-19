@@ -18,16 +18,15 @@ public class PlayerDatabase {
         return players;
     }
 
-    public void remove(String searchString) {// Wie soll hier ein Iterator verwendet werden?
-        players.removeIf(player -> player.getName().toLowerCase().contains(searchString.toLowerCase()));
-        /*
+    public void remove(String searchString) {
         for (Player player : players) {
             if (player.getName().toLowerCase().contains(searchString.toLowerCase())) {
                 players.remove(player);
             }
         }
-        */
+        // Wie soll hier ein Iterator verwendet werden?
     }
+
 
     public Set<Player> getPlayersWithFavoriteGame(String game) {
         return players.stream().filter(player -> player.getFavoriteGames().contains(game)).collect(Collectors.toSet());
@@ -43,7 +42,7 @@ public class PlayerDatabase {
 
     public Map<String, Long> getGameHistogram() {
         Map<String, Long> map = new HashMap<>();
-        for(Player player : players) {
+        for (Player player : players) {
             for (String game : player.getFavoriteGames()) {
                 map.put(game, map.getOrDefault(game, 0L) + 1);
             }
