@@ -1,7 +1,7 @@
 package de.hsruhrwest.oop.ss2025.praktikum9.a1;
 
 import java.io.*;
-import java.util.stream.Collectors;
+import java.util.List;
 
 public class Landscape {
     public enum TileTypes {
@@ -35,7 +35,7 @@ public class Landscape {
 
     public void setTileType(int x, int y, TileTypes tileType) {
         if (x < 0 || y < 0 || x >= width || y >= height) {
-            throw new IllegalArgumentException("Die Koordinaten müssen innerhalb des Feldes liegen");
+            throw new IllegalArgumentException("Die Koordinaten müssen innerhalb des Feldes liegen. Größe: {" + width + ", " + height + "}. Koordinaten: {" + x + ", " + y + "}.");
         }
         tileTypes[x][y] = tileType;
     }
@@ -51,7 +51,9 @@ public class Landscape {
                     case SAND -> ".";
                 };
                 sb.append(as);
-                if (i == width - 1) {
+                // Es soll immer am Ende jeder Zeile ein New-Line ausgegeben werden.
+                // In der letzten Zeile soll aber kein New-Line mehr stehen
+                if (i == width - 1 && height - 1 != j) {
                     sb.append("\n");
                 }
             }
@@ -61,12 +63,66 @@ public class Landscape {
 
     public void write (OutputStream out) throws IOException {
         out.write("landscape\n".getBytes());
-        out.write((getWidth() + "x" + getHeight()).getBytes());
+        out.write((getWidth() + "x" + getHeight() + "\n").getBytes());
         out.write(toString().getBytes());
     }
 
-    public void read (InputStream in) throws IOException {
-        in.readAllBytes();
-        String result = new BufferedReader(new InputStreamReader(in)).lines().collect(Collectors.joining("\n"));
+    public void read (InputStream in) throws InvalidFormatException {
+        // Datei lesen und zeilenweise in eine Liste schreiben
+        List<String> lines = new BufferedReader(new InputStreamReader(in)).lines().toList();
+        // Die Datei muss mindestens "landscape" und die Größe enthalten, sonst ist die Datei ungültig
+        if(lines.size() < 2) {
+            throw new InvalidFormatException("Die Datei enthält nicht genug Zeilen. Metadaten fehlen");
+        }
+        // Die erste Zeile muss "landscape" lauten, sonst ist die Datei definitionsgemäß ungültig
+        if(!lines.get(0).equals("landscape")) {
+            throw new InvalidFormatException("Die Datei startet nicht mit \"landscape\".");
+        }
+        // Um die zweite Zeile zu verarbeiten, müssen wir Breite und Höhe getrennt verarbeiten. Deshalb Teilen wir die Zeile am x
+        String[] size = lines.get(1).split("x");
+        // Es muss genau zwei Seiten neben dem x geben. Links die Breite, rechts die Höhe. 2x3x2 wäre ungültig
+        if(size.length != 2) {
+            throw new InvalidFormatException("Höhe und Breite sind nicht korrekt formatiert");
+        }
+        try {
+            int width = Integer.parseInt(size[0]);
+            int height = Integer.parseInt(size[1]);
+            // Muss die eingelesene Datei schon die richtige Größe haben, oder soll hier im Objekt die Größe dann angepasst werden?
+            if(width != this.width || height != this.height) {
+                throw new InvalidFormatException("Höhe und Breite stimmen nicht mit der Datei überein");
+            }
+        } catch (NumberFormatException e) {
+            // Wenn links oder rechts neben dem x keine gültige Zahl steht ist die Datei auch ungültig
+            // cddx23 wäre also ungültig
+            throw new InvalidFormatException("Die Höhe und Breite sind keine gültigen Zahlen");
+        }
+        // Hier überprüfen wir, ob auch wirklich die richtige Anzahl Zeilen für die angegebene Höhe
+        // in der Datei kodiert wurden. Die ersten zwei Zeilen sind Metadaten, also muss es zwei Zeilen mehr als die Höhe geben
+        if(lines.size() < (height + 2)) {
+            throw new InvalidFormatException("Die Daten in der Datei passen nicht zur spezifizierten Höhe. Die Datei hat " + lines.size() + " Zeilen, statt " + (width + 2));
+        }
+        for(int j = 2; j < lines.size(); j++) {
+            String line = lines.get(j);
+            // Jede Zeile muss auch die richtige Breite haben
+            if(line.length() != width) {
+                throw new InvalidFormatException("Die Daten in der Datei passen nicht zur spezifizierten Breite");
+            }
+            for(int i = 0; i < width; i++) {
+                TileTypes type = getTileTypes(line.charAt(i));
+                this.setTileType(i, j - 2, type);
+            }
+        }
+        // Muss das Kachelarray geleert werden, wenn ein Fehler auftritt? So werden eventuell unvollständige Daten
+        // gespeichert und alte Daten überschrieben
+    }
+
+    private static TileTypes getTileTypes(char c) throws InvalidFormatException {
+        // Der Bereich mit den Feld-Daten darf nur gültige Daten enthalten. Auch Leerzeichen sind nicht erlaubt
+        return switch(c) {
+            case 'X' -> TileTypes.BEDROCK;
+            case '~' -> TileTypes.WATER;
+            case '.' -> TileTypes.SAND;
+            default -> throw new InvalidFormatException("Die Datei enthält ungültige Daten. Es sind nur X, ~, . erlaubt. " + c + " wurde gefunden.");
+        };
     }
 }
