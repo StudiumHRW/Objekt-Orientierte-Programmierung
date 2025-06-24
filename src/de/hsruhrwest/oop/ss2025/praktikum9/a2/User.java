@@ -2,6 +2,9 @@ package de.hsruhrwest.oop.ss2025.praktikum9.a2;
 
 import java.time.LocalDate;
 
+/**
+ * Represents a user, with name, score and a when they became member
+ */
 public class User {
     private String name;
     private Profile profile;

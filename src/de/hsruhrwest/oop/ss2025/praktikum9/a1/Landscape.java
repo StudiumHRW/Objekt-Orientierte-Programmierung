@@ -3,29 +3,70 @@ package de.hsruhrwest.oop.ss2025.praktikum9.a1;
 import java.io.*;
 import java.util.List;
 
+/**
+ * Repräsentiert eine Landschaft mit verschiedenen Kacheltypen.
+ * Die Landschaft besteht aus einem zweidimensionalen Feld von Kacheln,
+ * wobei jede Kachel einen bestimmten Typ (BEDROCK, WATER, SAND) hat.
+ * Die Klasse bietet Methoden zum Lesen und Schreiben der Landschaft aus/in Streams.
+ */
 public class Landscape {
+    /**
+     * Enum für die verschiedenen Kacheltypen in der Landschaft.
+     * BEDROCK: Felsgestein, dargestellt durch 'X'
+     * WATER: Wasser, dargestellt durch '~'
+     * SAND: Sand, dargestellt durch '.'
+     */
     public enum TileTypes {
         BEDROCK, WATER, SAND
     }
 
+    /** Die Breite der Landschaft. */
     private final int width;
+
+    /** Die Höhe der Landschaft. */
     private final int height;
+
+    /** Das zweidimensionale Array, das die Kacheltypen speichert. */
     private final TileTypes[][] tileTypes;
 
+    /**
+     * Konstruktor für eine neue Landschaft mit der angegebenen Breite und Höhe.
+     * 
+     * @param width Die Breite der Landschaft
+     * @param height Die Höhe der Landschaft
+     */
     public Landscape(int width, int height) {
         this.width = width;
         this.height = height;
         this.tileTypes = new TileTypes[width][height];
     }
 
+    /**
+     * Gibt die Breite der Landschaft zurück.
+     * 
+     * @return Die Breite der Landschaft
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * Gibt die Höhe der Landschaft zurück.
+     * 
+     * @return Die Höhe der Landschaft
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * Gibt den Kacheltyp an der angegebenen Position zurück.
+     * 
+     * @param x Die x-Koordinate der Kachel
+     * @param y Die y-Koordinate der Kachel
+     * @return Der Kacheltyp an der angegebenen Position
+     * @throws IllegalArgumentException Wenn die Koordinaten außerhalb der Landschaft liegen
+     */
     public TileTypes getTileType(int x, int y) {
         if (x < 0 || y < 0 || x >= width || y >= height) {
             throw new IllegalArgumentException("Die Koordinaten müssen innerhalb des Feldes liegen");
@@ -33,6 +74,14 @@ public class Landscape {
         return tileTypes[x][y];
     }
 
+    /**
+     * Setzt den Kacheltyp an der angegebenen Position.
+     * 
+     * @param x Die x-Koordinate der Kachel
+     * @param y Die y-Koordinate der Kachel
+     * @param tileType Der zu setzende Kacheltyp
+     * @throws IllegalArgumentException Wenn die Koordinaten außerhalb der Landschaft liegen
+     */
     public void setTileType(int x, int y, TileTypes tileType) {
         if (x < 0 || y < 0 || x >= width || y >= height) {
             throw new IllegalArgumentException("Die Koordinaten müssen innerhalb des Feldes liegen. Größe: {" + width + ", " + height + "}. Koordinaten: {" + x + ", " + y + "}.");

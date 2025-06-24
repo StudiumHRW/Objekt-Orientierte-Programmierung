@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    /**
+     * Print all users where the specified filter returns true
+     * @param users
+     * @param filter
+     */
     public static void printMatchingUsers(List<User> users, UserFilter filter) {
         //users.stream().filter(filter::matches).forEach(System.out::println);
         for (User user : users) {
