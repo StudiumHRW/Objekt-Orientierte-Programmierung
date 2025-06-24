@@ -89,6 +89,16 @@ public class Landscape {
         tileTypes[x][y] = tileType;
     }
 
+    /**
+     * Konvertiert die Landschaft in eine String-Repräsentation.
+     * Jeder Kacheltyp wird durch ein bestimmtes Zeichen dargestellt:
+     * - BEDROCK: 'X'
+     * - WATER: '~'
+     * - SAND: '.'
+     * Zeilen werden durch Zeilenumbrüche getrennt, außer nach der letzten Zeile.
+     * 
+     * @return Eine String-Repräsentation der Landschaft
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -110,12 +120,32 @@ public class Landscape {
         return sb.toString();
     }
 
+    /**
+     * Schreibt die Landschaft in einen OutputStream.
+     * Das Format ist wie folgt:
+     * - Erste Zeile: "landscape"
+     * - Zweite Zeile: Breite + "x" + Höhe
+     * - Folgende Zeilen: Die String-Repräsentation der Landschaft
+     * 
+     * @param out Der OutputStream, in den geschrieben werden soll
+     * @throws IOException Wenn beim Schreiben ein Fehler auftritt
+     */
     public void write (OutputStream out) throws IOException {
         out.write("landscape\n".getBytes());
         out.write((getWidth() + "x" + getHeight() + "\n").getBytes());
         out.write(toString().getBytes());
     }
 
+    /**
+     * Liest eine Landschaft aus einem InputStream.
+     * Das erwartete Format ist:
+     * - Erste Zeile: "landscape"
+     * - Zweite Zeile: Breite + "x" + Höhe
+     * - Folgende Zeilen: Die String-Repräsentation der Landschaft
+     * 
+     * @param in Der InputStream, aus dem gelesen werden soll
+     * @throws InvalidFormatException Wenn das Format der Eingabe ungültig ist
+     */
     public void read (InputStream in) throws InvalidFormatException {
         // Datei lesen und zeilenweise in eine Liste schreiben
         List<String> lines = new BufferedReader(new InputStreamReader(in)).lines().toList();
@@ -165,6 +195,13 @@ public class Landscape {
         // gespeichert und alte Daten überschrieben
     }
 
+    /**
+     * Konvertiert ein Zeichen in den entsprechenden Kacheltyp.
+     * 
+     * @param c Das zu konvertierende Zeichen
+     * @return Der entsprechende Kacheltyp
+     * @throws InvalidFormatException Wenn das Zeichen keinem gültigen Kacheltyp entspricht
+     */
     private static TileTypes getTileTypes(char c) throws InvalidFormatException {
         // Der Bereich mit den Feld-Daten darf nur gültige Daten enthalten. Auch Leerzeichen sind nicht erlaubt
         return switch(c) {
