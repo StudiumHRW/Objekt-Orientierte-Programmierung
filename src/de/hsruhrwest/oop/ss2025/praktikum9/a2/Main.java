@@ -6,7 +6,12 @@ import java.util.List;
 
 public class Main {
     public static void printMatchingUsers(List<User> users, UserFilter filter) {
-        users.stream().filter(filter::matches).forEach(System.out::println);
+        //users.stream().filter(filter::matches).forEach(System.out::println);
+        for (User user : users) {
+            if (filter.matches(user)) {
+                System.out.println(user);
+            }
+        }
     }
 
     public static void main(String[] args) {
